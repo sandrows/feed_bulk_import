@@ -1,0 +1,6 @@
+name: Feed Import
+description: Bulk import RSS/ATOM Feeds.
+core: 8.x
+type: module
+package: Other
+version: 1.0

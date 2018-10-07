@@ -1,0 +1,7 @@
+feed_bulk_import.form:
+  path: '/admin/config/content/feed-import'
+  defaults:
+    _title: 'Feed Import'
+    _form: '\Drupal\feed_bulk_import\Form\ImportForm'
+  requirements:
+    _permission: 'access administration pages'

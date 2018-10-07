@@ -1,0 +1,5 @@
+feed_import:
+  title: Feed Import
+  description: Bulk import RSS/ATOM Feeds.
+  parent: system.admin_config_content
+  route_name: feed_bulk_import.form
