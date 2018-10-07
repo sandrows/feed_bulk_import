@@ -156,6 +156,8 @@ class ImportForm extends FormBase {
       }
 
       \Drupal::messenger()->addStatus($this->t('Imported Successfully.'));
+      $session = $this->getRequest()->getSession();
+      $session->remove('feed_items');
     }
     else {
       // Process
