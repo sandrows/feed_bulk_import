@@ -4,6 +4,7 @@ namespace Drupal\feed_bulk_import\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\Language;
 use Drupal\node\Entity\Node;
 use SimpleXMLElement;
 
@@ -51,6 +52,11 @@ class ImportForm extends FormBase {
         'feed_url' => [
           '#type' => 'url',
           '#title' => $this->t('Feed URL'),
+        ],
+        'lang' => [
+          '#type' => 'language_select',
+          '#title' => $this->t('Import Language'),
+          '#languages' => Language::STATE_CONFIGURABLE
         ],
         'submit' => [
           '#type' => 'submit',
@@ -103,6 +109,11 @@ class ImportForm extends FormBase {
           '#value' => 1
         ];
 
+        $form['lang'] = [
+          '#type' => 'hidden',
+          '#value' => $form_state->getValue('lang')
+        ];
+
         $form['items'] = [
           '#type' => 'checkboxes',
           '#title' => $this->t('Select articles for import...'),
@@ -139,7 +150,8 @@ class ImportForm extends FormBase {
             'value' => $body,
             'format' => 'basic_html'
           ],
-          'status' => 1
+          'status' => 1,
+          'langcode' => $form_state->getValue('lang'),
         ])->save();
       }
 
